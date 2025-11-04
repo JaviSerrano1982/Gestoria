@@ -1,0 +1,1099 @@
+:root {
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #4593d3;
+    --secundario: #31406b;
+    --gris: #757575;
+    --grisClaro: #DFE9F3;
+}
+/*  Globales **/
+html {
+    font-size: 62.5%;
+    box-sizing: border-box; /* Hack para Box Model **/
+    scroll-snap-type: y mandatory; /* Eje y (vertical) con comportamiento obligatorio */
+}
+/** Scroll Snap**/
+/*.contenedor-servicios,
+.navegacion-principal,
+.formulario,
+.nosotros,.footer,.servicio {
+    scroll-snap-align: center;
+    /* Alinea el inicio de la sección al contenedor principal 
+    scroll-snap-stop: always;
+    /* Parada siempre en el snap 
+}*/
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body {
+    font-size: 16px; /* 1rem = 10px */
+    font-family: "Lato", sans-serif;
+  font-weight: 100;
+  font-style:normal;
+    background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100% );
+}
+.contenedor {
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+
+.boton {
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 4rem;
+     font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: .5rem;
+    width: 90%;
+    text-align: center;
+    border: none;
+}
+@media (min-width: 768px) {
+    .boton {
+        width: auto;
+        margin-top: 5rem;
+    }
+}
+.boton:hover {
+    cursor: pointer;
+}
+
+
+
+/* Tipografia */
+h1 {
+    font-size: 3.8rem;
+}
+h2 {
+    font-size: 2.8rem;
+    color:var(--secundario);
+}
+h3 {
+    font-size: 2rem;
+}
+h1,h2,h3 {
+    text-align: center;
+}
+
+
+/* Titulos */
+.titulo span {
+    font-size: 2rem;
+}
+
+/** Utilidades **/
+.w-sm-100 {
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .w-sm-100 {
+        width: auto;
+    }
+}
+.flex {
+    display: flex;
+}
+.alinear-derecha {
+    justify-content: flex-end;
+}
+
+/* Navegacion Principal */
+.nav-bg {
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    /* Asegura que la barra de navegación esté por encima de otros elementos */
+}
+.nav-bg, .footer {
+    background-color: var(--secundario);
+}
+
+.navegacion-principal {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+@media (min-width: 768px) {
+    .navegacion-principal {
+        flex-direction: row;
+        justify-content:center;
+        gap: 7rem;
+    }
+    .toggle-symbol {
+    display: none;
+}
+   
+}
+
+.navegacion-principal a {
+    display: flex;
+    text-align: center;
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 300;
+    padding: 2rem;
+    justify-content: center;
+    border-radius: 5px;
+}
+.navegacion-principal a.activo {
+    color: white;
+    /* Color del texto para el enlace activo */
+    background-color: var(--secundario);/* Fondo destacado */
+    font-weight: bold;/* Texto en negrita */
+    border-bottom: 2px solid white; /* Línea blanca inferior */
+}
+.navegacion-principal a:hover {
+    background-color: var(--blanco);
+    color: var(--oscuro);
+    font-weight:bold ;
+    
+}
+/* Estilos para el menú desplegable */
+.menu-item {
+    position: relative;
+    cursor: pointer;
+}
+
+.submenu {
+    
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--secundario);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    z-index: 1001;
+    border-radius: 5px;
+    min-width: 260px; /* Ancho mínimo para el submenú */
+    padding: 0; /* Quitar el padding por defecto del <ul> */
+    margin: 0; /* Quitar el margen por defecto del <ul> */
+    background-color: transparent; /* Fondo transparente */
+    margin-top: -30px; /* Inicia 30px más arriba */
+    visibility: hidden; /* Inicialmente oculto */
+    opacity: 0; /* Inicialmente invisible */
+    transition: margin-top 0.4s ease, opacity 0.4s ease-in; /* Transiciones suaves */
+}
+@media (max-width: 767px){
+    .submenu{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 100%; /* Esto posiciona el submenú justo debajo del enlace "SERVICIOS" */
+        background-color: #313137;
+        min-width: 100%;
+          
+    } 
+         
+    }
+    
+.submenu li {
+    list-style: none;
+    height: 5rem;
+   
+}
+
+
+.submenu a {
+    padding: 1rem 2rem;
+    white-space: nowrap;
+    color: var(--blanco);
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+
+
+@media (min-width: 768px){
+    /* Mostrar el submenu al pasar el ratón */
+.menu-item:hover .submenu {
+    display: block;
+    margin-top: 0; /* Mover a la posición final */
+    visibility: visible; /* Hacer visible */
+    opacity: 1; /* Hacer visible */
+}
+
+}
+/* CSS para pantallas menores a 480px */
+@media (max-width: 767px) {
+    .nav-bg {
+        position: relative; /* Asegura que los elementos hijos se posicionen correctamente */
+    }
+    .menu-item {
+        position: relative; /* Asegura que el submenú se posicione relativo a este contenedor */
+    }
+    .submenu {
+        display: none; /* Ocultar el submenú por defecto */
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s, visibility 0.3s, display 0.3s; /* Transición suave */
+        top: 150%; /* Posicionar el submenú justo debajo del contenedor .menu-item */
+       
+    }
+
+    .menu-item.active .submenu {
+        display: block; /* Mostrar el submenú cuando la clase active está presente */
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+/* MENU DESPLEGABLE PARA MENOS 768PX */
+@media (max-width: 767px) {
+    .submenu {
+        display: none; /* Oculta el submenú por defecto */
+        flex-direction: column;
+        padding-left: 2rem; /* Añade un poco de margen izquierdo */
+        
+    }
+
+    .menu-item.active .submenu {
+        display: block; /* Muestra el submenú cuando se activa */
+        position: relative;
+        margin-top: 5px;
+    }
+
+    .menu-item .submenu li {
+        margin-bottom: 1rem; /* Añade espacio entre los elementos del submenú */
+        
+    }
+
+    .toggle-symbol {
+        margin-left: 0.5rem; /* Espacio entre "SERVICIOS" y "+" */
+        
+    }
+    
+}
+/* Hero */
+.hero {
+    background-image: url(../img/contabilidad.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 600px;
+    position: relative;
+    margin-bottom: 4rem;
+}
+.contenido-hero {
+    position: absolute;
+    background-color: rgba( 0,0,0, .7 ); /** Anterior **/
+    background-color: rgb( 0 0 0 / 70% );
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.contenido-hero img{
+    margin-top: 20rem;
+   width: 90%;
+   
+}
+@media (max-width: 480px) {
+    .contenido-hero img {
+            width: 100%;
+            margin: 0 auto;
+        }
+}
+@media (min-width: 480px) {
+    .contenido-hero img {
+            width: 100%;
+            margin: 0 auto;
+        }
+}
+
+
+@media (min-width: 768px) {
+    .contenido-hero img {
+            width: 80%;
+            margin: 0 auto;
+        }
+}
+@media (min-width: 1440px) {
+    .contenido-hero img {
+            width: 60%;
+            margin: 0 auto;
+        }
+}
+/** Servicios **/
+.contenedor-servicios {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .contenedor-servicios {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /*grid-template-rows: 800px 800px;*/
+        column-gap: 2rem;
+        padding: 1rem;
+        grid-auto-rows: auto;
+    }
+}
+
+
+.servicio h3 {
+    color: var(--secundario);
+    font-weight: 500;
+    margin-bottom: 10rem;
+    font-size: 25px;
+    position: relative;
+    text-align: center;
+    margin: 20px 0 50px 0;
+    padding: 0 20px;
+    /* Espacio para las líneas laterales */ 
+   
+}
+@media (min-width: 390px) {
+.servicio h3::before,
+.servicio h3::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    height: 1px;
+    background-color: var(--secundario);
+}
+
+.servicio h3::before {
+    left: 1rem;
+    width: calc(50% - 110px);
+        /* Ajusta el ancho de la línea antes*/ 
+    transform: translateY(-50%);
+}
+
+.servicio h3::after {
+    right: 1rem;
+    width: calc(50% - 110px);
+        /* Ajusta el ancho de la línea después*/
+    transform: translateY(-50%);
+}
+.servicio .ancho2::before {
+    width: calc(50% - 120px);
+    /* Ajusta el ancho de la línea antes */
+}
+
+.servicio .ancho2::after {
+    width: calc(50% - 120px);
+    /* Ajusta el ancho de la línea después */
+}
+.servicio .ancho3::before {
+    width: calc(50% - 120px);
+    /* Ajusta el ancho de la línea antes */
+}
+
+.servicio .ancho3::after {
+    width: calc(50% - 120px);
+    /* Ajusta el ancho de la línea después */
+}
+
+    
+.servicio .ancho4::before{
+    width: calc(50% - 150px);
+        /* Ajusta el ancho de la línea antes */
+}
+.servicio .ancho4::after {
+    width: calc(50% - 150px);
+    /* Ajusta el ancho de la línea después */
+}
+}
+
+@media (min-width: 1440px){
+.servicio h3::before,
+.servicio h3::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    height: 1px;
+    background-color: var(--secundario);
+}
+
+.servicio h3::before {
+    left: 1rem;
+    width: calc(50% - 130px);
+        /* Ajusta el ancho de la línea antes*/ 
+    transform: translateY(-50%);
+}
+
+.servicio h3::after {
+    right: 1rem;
+    width: calc(50% - 130px);
+        /* Ajusta el ancho de la línea después*/
+    transform: translateY(-50%);
+}
+.servicio .ancho2::before {
+    width: calc(50% - 150px);
+    /* Ajusta el ancho de la línea antes */
+}
+
+.servicio .ancho2::after {
+    width: calc(50% - 150px);
+    /* Ajusta el ancho de la línea después */
+}
+.servicio .ancho3::before {
+    width: calc(50% - 140px);
+    /* Ajusta el ancho de la línea antes */
+}
+
+.servicio .ancho3::after {
+    width: calc(50% - 140px);
+    /* Ajusta el ancho de la línea después */
+}
+
+    
+.servicio .ancho4::before{
+    width: calc(50% - 185px);
+        /* Ajusta el ancho de la línea antes */
+}
+.servicio .ancho4::after {
+    width: calc(50% - 185px);
+    /* Ajusta el ancho de la línea después */
+}
+}
+.servicio p {
+    line-height: 2;
+    text-align: center;
+    font-weight: 400;
+    
+}
+.servicio {
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+}
+.servicio img{
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 5px;
+   
+}
+.servicio__imagen{
+    width: 100%;
+        padding-top: 75%; /* Aspect ratio de 4:3 */
+        position: relative;
+        overflow: hidden;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+.servicio__imagen img{
+position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.servicio__imagen{
+    cursor: pointer;
+}
+.servicio__imagen .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: var(--blanco);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    text-align: center;
+    padding: 1rem;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size:150%;
+    font-weight: 300;
+}
+
+.servicio__imagen:hover .overlay {
+    opacity: 1;
+}
+
+/*Submenú servicios*/
+/*Asesoria fiscal*/
+.contenedor-fiscal {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    width: 120%;
+    gap: 1rem;
+    line-height: 2;
+    margin: 0 auto;/* Centra el grid en la página */
+    justify-content: center;/* Asegura que el contenido del grid esté centrado */
+    align-items: center;
+    
+
+}
+.fiscal-servicios{  
+    
+    margin-right: 0;
+    font-weight: 400;
+    font-size: 90%;
+}
+.fiscal-servicios a svg{
+    width: 3rem;
+    height: 3rem; 
+    vertical-align: baseline; /* Alinea el SVG con la parte superior del texto */
+}
+
+.fiscal-servicios a{
+    display: flex;
+    align-items: flex-start; /* Alinea elementos al inicio (parte superior) */
+    align-items: center;  
+    margin-right: 0;             
+}
+.fiscal-dudas a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000;
+    font-weight: 400;
+    font-size: 120%;
+}
+
+.fiscal-dudas svg {
+    margin-right: 8px;
+    /* espacio entre el SVG y el texto */
+    color: #31406b;
+    
+}
+
+.fiscal-dudas {
+    margin: 0 auto;
+    grid-row: 3/4;
+    padding: 5rem;
+}
+
+.contenedor-fiscal h2{
+    background-color:var(--secundario);
+    color: #ffffff;
+    grid-row: 1/2;
+    font-weight:400 ;
+}
+.sombra-fiscal {
+    box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.48);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 90%;
+}
+
+@media (min-width: 767px) {
+    .fiscal-servicios {
+            margin: 0 auto;
+            font-weight: 400;
+            font-size: 110%;
+            text-align: justify;
+            padding: 20px;/* Espacio interno dentro del div */
+            line-height: 2;
+            grid-column: 1/2;
+            grid-row: 2/3;
+        }
+        .fiscal-servicios svg{
+            color: var(--secundario);
+            margin-right: 2rem;  
+            width: 3rem;
+            height: 3rem; 
+        }
+        .fiscal-servicios a{
+            display: flex;
+            align-items: center;  
+            
+                       
+        }
+
+        .contenedor-fiscal {
+            display: grid;
+            grid-template-columns: repeat (2, 1fr);
+            gap: 1rem;
+            width: 95%;
+        
+                }
+                .fiscal-dudas a {
+                    display: flex;
+                    align-items: center;
+                    text-decoration: none;
+                    color: #000;
+                    font-weight: 400;
+                    font-size:100%;
+                }
+        
+                .fiscal-dudas svg {
+                    margin-right: 8px;
+                    /* espacio entre el SVG y el texto */
+                    color:#31406b;
+                    width: 5rem;
+                        height: 5rem;
+                }
+                .fiscal-dudas{
+                   margin: 0 auto;
+                   margin-right: 10rem;
+                    grid-column: 2/3;
+                    grid-row: 2/3;
+                    padding: 2rem;
+                    font-size: 110%;
+                    
+                    
+                }
+                .contenedor-fiscal h2 {
+                 grid-column:1/3;
+        }
+}
+@media (min-width: 1400px) {
+    .fiscal-servicios {
+            margin: 0 auto;
+            font-weight: 400;
+            font-size: 120%;
+            text-align: justify;
+            padding: 20px;/* Espacio interno dentro del div */
+            line-height:2;
+            grid-column: 1/2;
+            grid-row: 2/3;
+        }
+        .fiscal-servicios svg{
+            color: var(--secundario);
+            margin-right: 2rem;   
+        }
+        .fiscal-servicios a{
+            display: flex;
+            align-items: center;               
+        }
+
+        .contenedor-fiscal {
+            display: grid;
+            grid-template-columns: repeat (2, 1fr);
+            width: 80%;
+            margin: 0 auto;
+             
+             gap: 1rem;
+        
+                }
+                .fiscal-dudas a {
+                    display: flex;
+                    align-items: center;
+                    text-decoration: none;
+                    color: #000;
+                    font-weight: 400;
+                    font-size:120%;
+                   
+                }
+        
+                .fiscal-dudas svg {
+                    margin-right: 8px;
+                    /* espacio entre el SVG y el texto */
+                    color:#31406b;
+                    width: 7rem;
+                    height: 7rem;
+                }
+                .fiscal-dudas{
+                    display: flex;
+                    align-items: center;
+                   margin-right: 15rem;
+                    grid-column: 2/3;
+                    grid-row: 2/3;
+                    padding: 2rem;
+                    
+                }
+                .contenedor-fiscal h2 {
+                 grid-column:1/3;
+        }
+}
+
+
+
+/*Nosotros*/
+
+
+.contenedor-nosotros {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+    padding: 1rem;
+    width: 90%;
+    margin: 0 auto;
+}
+.contenedor-nosotros img{
+    margin-bottom: 4rem;
+    
+}
+.sombra-nosotros {
+    box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.48);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+.nosotros__contenido {
+    margin: 2rem;
+    font-weight: 400;
+    font-size: large;
+    text-align: justify;
+
+}
+
+.nosotros__imagen {
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+    grid-column: 1/2;
+    grid-row: 1/2;
+
+}
+
+.titulo {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    text-align: center;
+    color: var(--secundario)
+}
+
+
+@media (min-width: 800px) {
+    .contenedor-nosotros {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 2rem;
+        padding: 10rem;
+        max-width: 1500px;
+        /* Define un ancho máximo para el grid */
+        margin: 0 auto;
+        /* Centra el grid en la página */
+        justify-content: center;
+        /* Asegura que el contenido del grid esté centrado */
+    }
+    .sombra-nosotros {
+        box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.48);
+        background-color: var(--blanco);
+        padding: 8rem;
+        border-radius: 1rem;
+    }
+         .nosotros__imagen {
+             grid-column: 2/3;
+             grid-row: 2/3;
+             margin: 0 auto;
+             height: auto;
+             /* Mantiene la proporción de la imagen */
+    
+         }
+    
+         .titulo {
+             grid-column: 1/3;
+             grid-row: 1/2;
+             text-align: center;
+             color: var(--secundario)
+         }
+       
+}
+/** Contacto **/
+
+    .contacto{
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 5rem;
+            column-gap: 2rem;
+            justify-content: center;
+            margin-top: 10rem;  
+            margin: 0 auto;
+    }
+    .horarios{
+        border: 2px solid #000; /* Borde de 2px de ancho, color negro */
+        padding: 15px; /* Espaciado interno */
+        border-radius: 10px; /* Bordes redondeados */
+        background-color: #f9f9f9; /* Color de fondo opcional */
+        display: inline-block; /* Ajusta el tamaño al contenido */
+        width: fit-content; /* Ajusta el ancho al contenido */
+        height: fit-content;
+        background-color: transparent;
+        text-align: center;
+        margin: 0 auto;
+        font-size: 2cap;
+        grid-column: 1 ;
+        grid-row: 2;
+        width: 90%;
+       
+       
+        
+      }
+      .formulario {
+        background-color: var(--gris);
+        width: 90%;
+        margin: 0 auto;
+        padding: 1rem;
+        border-radius: 1rem;
+        grid-column: 1 ;
+        grid-row: 4;
+        margin-bottom: 5rem;
+       
+    }
+    .ubicacion{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-column: 1 ;
+        grid-row: 3;
+        width: 90%;
+        margin: 0 auto;
+    }
+    .ubicacion iframe{
+        max-width: 100%;
+    }
+    .info{
+        grid-column: 1;
+        grid-row: 1;
+        margin-bottom: 1rem;  
+    }
+    .mail h3{
+        font-size: medium;
+    }
+    .telefono, .whatsapp, .mail{
+        display: flex;
+        background-color: var(--secundario);
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+        justify-content: center;
+        align-items: center;
+        padding: 2px;
+        height: 5rem;    
+    }
+     .mail-link{
+        text-decoration: none;
+     }
+          .telefono h3, .whatsapp h3, .mail h3{
+            color: var(--blanco);
+            margin-left: 0.5rem;
+           
+          }
+    
+@media (min-width: 800px) {
+    
+    .contacto{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        column-gap: 2rem;
+        justify-content: center; /* Centra el grid horizontalmente */
+        align-content: center; /* Centra el grid verticalmente si hay más de una fila */
+       
+    }
+    .horarios{
+        border: 2px solid #000; /* Borde de 2px de ancho, color negro */
+        padding: 40px; /* Espaciado interno */
+        border-radius: 10px; /* Bordes redondeados */
+        background-color: #f9f9f9; /* Color de fondo opcional */
+        justify-content: center;
+        align-items: center;
+        background-color: transparent;
+        text-align: center;
+        margin: 0 auto;
+        font-size: 2cap;
+        grid-column: 1/2 ;
+        grid-row: 2/3;
+        
+        
+      }
+      .formulario {
+        background-color: var(--gris);
+        width: min( 60rem, 90% ); /** Utilizar el valor más pequeño **/
+        height: 90%;
+        margin: 0 auto;
+        padding: 1rem;
+        border-radius: 1rem;
+        grid-column: 1/3 ;
+        grid-row: 3/4;
+        margin-bottom: 5rem;
+        margin-top: 5rem;
+       
+    }
+    .ubicacion{
+        display: flex;
+        justify-content: center;
+         align-items: center;
+        grid-column: 2/3 ;
+        grid-row: 2/3;
+        width: 100%;
+        padding: 0; /* Elimina padding si no es necesario */
+        margin: 0; /* Elimina margin si no es necesario */
+        
+    }
+    .ubicacion iframe{   
+        display: block;
+        width: 90%; /* Ocupa el 100% del ancho del contenedor */
+        height: 100%; /* Ocupa el 100% de la altura del contenedor */
+        border: 0; /* Elimina el borde del iframe */
+       
+    }
+    .info{
+        grid-column: 1/3;
+        grid-row: 1/2;
+        
+    }
+    .telefono h3, .whatsapp h3, .mail h3{
+        color: var(--blanco);
+        margin-left: 0.5rem;
+        font-size: large;
+      }
+      .telefono, .whatsapp, .mail{
+        display: flex;
+        background-color: var(--secundario);
+        border-radius: 1rem;
+       
+        width: 70%;
+        justify-content: center;
+           align-items: center;
+           margin: 2rem auto;
+          }
+         .mail h3 {
+             font-size: medium;
+         }
+       
+    }
+/* FIN DEL MEDIA QUERY*/
+
+.contacto a{
+    text-align: center;
+    font-weight: 700;
+}
+
+
+  .horarios h1{
+    font-size: 120%;
+    text-align: center;
+  }
+  .horarios h2{
+    font-size: 100%;
+    text-align: center;
+    font-weight: 400;
+  }
+ 
+     
+      
+      .telefono svg,
+      .whatsapp svg,
+      .mail svg {
+        width: 30px; /* Ajusta este valor según el tamaño deseado */
+        height: 30px; /* Ajusta este valor según el tamaño deseado */size: 50%; /* Ajusta este valor según el espacio deseado */
+      }
+     
+
+.formulario > * {
+    margin: 1rem; /* Márgenes uniformes de 1rem en todos los lados */
+    
+}
+
+
+.formulario fieldset {
+    border: none;
+    
+}
+.formulario legend {
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--blanco);
+}
+.ubicacion h2{
+    text-align: center;
+
+}
+.ubicacion iframe{
+    border-radius: 1rem;
+}
+
+.info h2{
+    text-align: center;
+    
+    color: var(--secundario);
+}
+
+@media (min-width: 768px) {
+    .contenedor-campos {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: auto auto 20rem ;
+        column-gap: 1rem;
+    }
+
+    .campo:nth-child(3),
+    .campo:nth-child(4) {
+        grid-column: 1 / 3;
+    }
+}
+.campo {
+    margin-bottom: 1rem;
+}
+.campo label {
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+}
+.campo textarea {
+    height: 20rem;
+}
+
+.input-text {
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
+.politica{
+    color: var(--blanco);
+  font-weight: 200;
+  margin-bottom: 0rem;
+}
+.politica a{
+    color: var(--blanco);
+    font-weight: bold;
+}
+.tamaño-politica{
+    width: 100%;
+}
+
+@media (max-width: 768px){
+    .tamaño-politica{
+        margin-top: 2rem;
+    }
+    
+  } 
+.politica-contenido{
+    display: grid;
+    grid-template-columns: 1fr;
+    font-weight: 400;
+    font-size: large;
+    text-align:left;
+    margin: 0 auto;/* Centra horizontalmente el contenedor */
+    padding: 20px; /* Añade algo de relleno opcional */
+    max-width: 1000px;/* Asegura que el contenedor no exceda el ancho de la pantalla */
+    box-sizing: border-box;/* Incluye padding y border en el ancho total del contenedor */
+    
+}
+.politica-contenido h1,h2,h3{
+    text-align: left;
+    color: var(--oscuro);
+  
+}
+
+/** Footer **/
+.footer {
+   
+    text-align: center;
+   color: var(--blanco);
+    font-weight: 500;
+    padding: 1rem;
+    margin-top: 4rem;
+}
