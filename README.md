@@ -48,7 +48,8 @@ Archivo de envío del formulario:
 Asegúrate de tener PHP instalado.  
 Luego, abre una terminal dentro de la carpeta del proyecto y ejecuta:
 
-```php -S localhost:8000 -t .
+```
+php -S localhost:8000 -t .
 ```
 
 Ahora abre en tu navegador:  
@@ -99,4 +100,5 @@ Edita el archivo enviar.php:
 ## 📜 Créditos
 
 - PHPMailer, incluido en /src.
+
 
